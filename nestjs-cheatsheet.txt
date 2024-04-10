@@ -1,0 +1,86 @@
+nestjs 
+
+-how install :
+npm i -g @nestjs/cli
+
+-how create a projeect:
+nest new [name-project]
+
+---delete some files in project
+
+
+-how create a module 
+nest g module [name]
+
+
+
+-structure => req => module => controller => srvice
+
+
+-how create a controller: 
+nest g controller [name] 
+
+
+-dependecy indjection , services ,providers
+
+
+-how to create service 
+
+nest g service [name] 
+
+
+-how to create a endpoint 
+same a defind a service import in controller defind a @Get in controller and use data services
+
+
+
+
+
+-how to add typechecking and uuid in endpoints:
+ create a file model sample this bookmark.model.ts and defind a interface and add interface in services for type checking
+ import uuid and use sample uuid()
+
+
+-how post request in nestjs 
+ add  endpoint with @Post()
+ use @body() 
+ add new object in data
+
+
+-waht is dto and how use dto
+ dto mean data transfer object a way for tranfer data 
+ create a folder in folder bookmark dto and create a file [name].dto.ts and export a class 
+ use this class in service and model and controller 
+
+-how read parameters 
+ @Get("/:id")
+ @param('id') id
+
+
+-how use Query Parameter 
+ @Query()
+ create a new dto file 
+ use methode include 
+ return data
+
+-how use delete methode api
+ @Delete("/:id")
+ write logic with database or static data 
+ return new data
+
+-how use patch methode api
+ @Patch("/:id")
+ write logic with database or static data 
+ return new data 
+
+
+-how add prefix in api for sample /v1/api/....
+ write one line code in main.ts
+ app.setGlobalPrefix('/api/v1/')
+
+
+
+
+
+
+
