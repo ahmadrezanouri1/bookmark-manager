@@ -1,20 +1,25 @@
+// user.module.ts
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from './jwt.strategy';
-import { AuthService } from './auth.service';
+import { User, UserSchema } from './schemas/user.schema'; // Import User and UserSchema
+import { JwtModule } from '@nestjs/jwt'; // Import JwtModule
+import { Bookmark, BookmarkSchema } from './schemas/bookmark.schema';
 
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    MongooseModule.forFeature([
+      { name: Bookmark.name, schema: BookmarkSchema },
+    ]),
     JwtModule.register({
-      secret: 'your_secret_key', // Replace with your own secret key
+      secret: 'YOUR_SECRET_KEY', // Provide your secret key here
       signOptions: { expiresIn: '1h' },
     }),
   ],
   controllers: [UserController],
-  providers: [UserService, JwtStrategy, AuthService],
+  providers: [UserService],
+  exports: [UserService],
 })
 export class UserModule {}
