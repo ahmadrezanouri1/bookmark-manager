@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // Swagger Configuration
   const config = new DocumentBuilder()
-    .setTitle('Bookamrks webapp ')
+    .setTitle('Bookamrks webapp')
     .setDescription(
       'this api for a app to social bookmark follow peploe and see bokmarks',
     )
